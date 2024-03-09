@@ -1,0 +1,11 @@
+version: '3'
+services:
+  tfhe_experiment:
+    network_mode: "host"
+    restart: always
+    build: .
+    container_name: 'tfhe'
+    working_dir: '/root/'
+    tty: true
+    volumes:
+      - ./:/root/home/
