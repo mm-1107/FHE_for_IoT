@@ -1,5 +1,5 @@
 # Set CPU architecture
-FROM --platform=linux/arm/v8 ubuntu:22.04
+FROM arm64v8/debian:bullseye
 RUN apt-get update && apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential \
   g++ libomp-dev cmake git libgoogle-perftools-dev wget unzip autoconf libtool
