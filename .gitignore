@@ -1,2 +1,6 @@
 lib/
 encode_encrypt_gperf
+*.massif
+test
+tfhe_openfhe
+build/

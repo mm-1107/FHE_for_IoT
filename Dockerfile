@@ -14,7 +14,7 @@ RUN ./autogen.sh && ./configure && make -j$(($(nproc)/2)) && make install
 COPY ./openfhe /openfhe
 RUN mkdir /openfhe/build
 WORKDIR /openfhe/build
-RUN cmake -DWITH_TCM=ON .. && make tcm && make -j$(($(nproc)/4))
+RUN cmake -DWITH_TCM=ON .. && make tcm && make -j$(($(nproc)/4)) && make install
 
 # Install cereal
 WORKDIR /root/
@@ -32,3 +32,10 @@ COPY ./TFHEpp /TFHEpp
 RUN mkdir /TFHEpp/build
 WORKDIR /TFHEpp/build
 # RUN cmake .. -DENABLE_TEST=ON -DUSE_SPQLIOX_AARCH64=ON -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release && make -j$(nproc)
+
+# Build benchmark
+WORKDIR /root/
+COPY ./benchmark /benchmark
+RUN mkdir /benchmark/build
+WORKDIR /benchmark/build
+RUN cmake .. && make
