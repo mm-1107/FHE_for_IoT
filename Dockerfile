@@ -4,43 +4,26 @@ RUN apt-get update && apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential \
   g++ libomp-dev cmake git libgoogle-perftools-dev wget unzip autoconf libtool
 
-# Install profiler
-#WORKDIR /root/
-#RUN git clone https://github.com/gperftools/gperftools
-#WORKDIR /root/gperftools
-#RUN ./autogen.sh && ./configure && make -j$(($(nproc)/2)) && make install
-
 # Build OpenFHE (cmake with tcmalloc)
-COPY ./thirdparty/openfhe /openfhe
-RUN mkdir /openfhe/build
-WORKDIR /openfhe/build
-RUN cmake -DWITH_TCM=ON .. && make tcm && make -j$(($(nproc)/4)) && make install
-
-# Install cereal
 WORKDIR /root/
-RUN wget https://github.com/USCiLab/cereal/archive/v1.3.2.zip
-RUN unzip v1.3.2.zip && rm v1.3.2.zip
-RUN export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/root/cereal-1.3.2/include"
+RUN git clone -b experiment https://github.com/i04347/openfhe.git
+RUN mkdir /root/openfhe/build
+WORKDIR /root/openfhe/build
+RUN cmake -DWITH_TCM=ON .. && make tcm && make -j$(($(nproc)/4)) && make install
 
 # Install xbyak_aarch64
 WORKDIR /root/
 RUN git clone https://github.com/fujitsu/xbyak_aarch64.git
-RUN export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/root/xbyak_aarch64"
-
-# Build TFHEpp
-# COPY ./thirdparty/TFHEpp /TFHEpp
-# RUN mkdir /TFHEpp/build
-# WORKDIR /TFHEpp/build
-# RUN cmake .. -DENABLE_TEST=ON -DUSE_SPQLIOX_AARCH64=ON -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release && make -j$(nproc)
+ENV CPLUS_INCLUDE_PATH $CPLUS_INCLUDE_PATH:/root/xbyak_aarch64
 
 # Build TFHEpp (from HE3DB)
-COPY ./thirdparty/HE3DB/thirdparty/TFHEpp /TFHEpp
-RUN mkdir /TFHEpp/build
-WORKDIR /TFHEpp/build
+WORKDIR /root/
+RUN git clone https://github.com/zhouzhangwalker/HE3DB.git
+RUN mkdir /root/HE3DB/thirdparty/TFHEpp/build
+WORKDIR /root/HE3DB/thirdparty/TFHEpp/build
 RUN cmake .. -DUSE_RANDEN=OFF -DUSE_SPQLIOX_AARCH64=ON -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release && make -j$(nproc)
 
 # Build benchmark
-WORKDIR /root/
 COPY ./benchmark /benchmark
 RUN mkdir /benchmark/build
 WORKDIR /benchmark/build

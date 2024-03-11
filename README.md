@@ -15,7 +15,7 @@ $ docker-compose up -d
 
 ```
 $ docker cp tfhe:/benchmark/build/tfhe_openfhe .
-$ mkdir lib && docker cp tfhe:/openfhe/build/lib/. ./lib/
+$ mkdir lib
 $ docker cp tfhe:/usr/local/lib/. ./lib/
 $ scp ./tfhe_openfhe pi@raspberrypi.local:~/
 $ scp lib/lib*.so* pi@raspberrypi.local:~/lib
