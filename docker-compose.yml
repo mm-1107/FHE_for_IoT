@@ -9,3 +9,9 @@ services:
     tty: true
     volumes:
       - ./:/root/home/
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+    memswap_limit: 32G

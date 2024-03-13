@@ -33,10 +33,10 @@ int main() {
     // Sample Program: Step 3: Create the to-be-evaluated funciton and obtain its corresponding LUT
     // int p = cc.GetMaxPlaintextSpace().ConvertToInt();  // Obtain the maximum plaintext space
     // std::cout << "maximum plaintext space is " << p << std::endl;
-
     const int vector_size = 100;
     std::vector<LWECiphertext> cipher(vector_size);
     double encryption_start = get_time_msec();
+    // auto ct1 = cc.Encrypt(sk, 1, FRESH);
     for (int i = 0; i < vector_size; i++) {
         cipher[i] = cc.Encrypt(sk, 1, FRESH);
     }

@@ -5,8 +5,8 @@
 ## Build OpenFHE and TFHEpp
 
 ```
-$ git clone --recursive [this repo]
-$ cd fhe_for_iot
+$ git clone [this repo]
+$ cd FHE_for_IoT
 $ docker-compose build
 $ docker-compose up -d
 ```
