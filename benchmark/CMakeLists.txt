@@ -36,7 +36,7 @@ endif()
 
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/demoData)
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/analysis)
-add_executable( tfhe_openfhe tfhe_openfhe.cpp )
+add_executable( switch-rlwe-to-lwe switch-rlwe-to-lwe.cpp )
 add_executable( boolean-serial-binary-pke-keygen boolean-serial-binary-pke-keygen.cpp )
 add_executable( boolean-serial-binary-pke-encrypt boolean-serial-binary-pke-encrypt.cpp )
 add_executable( boolean-serial-binary-keygen boolean-serial-binary-keygen.cpp )

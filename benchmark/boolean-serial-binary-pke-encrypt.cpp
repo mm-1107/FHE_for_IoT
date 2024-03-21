@@ -77,9 +77,9 @@ int main() {
     std::cout << "The public key has been deserialized." << std::endl;
 
     // Encryption for a ciphertext that will be serialized
-    double start = get_time_msec();
+    // double start = get_time_msec();
     auto ct1 = cc.Encrypt(pk, 1, LARGE_DIM);
-    std::cout << "Encryption time[ms] is " << get_time_msec() - start << std::endl;
+    // std::cout << "Encryption time[ms] is " << get_time_msec() - start << std::endl;
     /*
     const int vector_size = 256;
     std::vector<LWECiphertext> cipher(vector_size);

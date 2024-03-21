@@ -1,0 +1,6 @@
+add_executable(switch-rlwe-to-lwe switch-rlwe-to-lwe.cpp)
+#add_executable(cloud cloud.cpp)
+#add_executable(verify verify.cpp)
+target_link_libraries(switch-rlwe-to-lwe tfhe++)
+#target_link_libraries(cloud tfhe++)
+#target_link_libraries(verify tfhe++)

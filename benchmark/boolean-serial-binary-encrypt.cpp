@@ -79,9 +79,9 @@ int main() {
     std::cout << "The secret key has been deserialized." << std::endl;
 
     // OPERATIONS WITH DESERIALIZED KEYS AND CIPHERTEXTS
-    double start = get_time_msec();
+    // double start = get_time_msec();
     auto ct1 = cc.Encrypt(sk, 1);
-    std::cout << "Encryption time[ms] is " << get_time_msec() - start << std::endl;
+    // std::cout << "Encryption time[ms] is " << get_time_msec() - start << std::endl;
 
     // Serializing a ciphertext
 

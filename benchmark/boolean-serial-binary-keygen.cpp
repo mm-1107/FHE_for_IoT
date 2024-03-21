@@ -55,6 +55,13 @@ int main() {
     // Generate the bootstrapping keys
     cc1.BTKeyGen(sk1);
 
+    auto params = cc1.GetParams()->GetLWEParams();
+
+    std::cout << "Q: " << params->GetQ() << std::endl;
+    std::cout << "N: " << params->GetN() << std::endl;
+    std::cout << "q: " << params->Getq() << std::endl;
+    std::cout << "n: " << params->Getn() << std::endl;
+    
     std::cout << "Done generating all keys." << std::endl;
 
     // Serializing key-independent crypto context
