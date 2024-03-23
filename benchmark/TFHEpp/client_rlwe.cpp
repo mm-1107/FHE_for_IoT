@@ -31,11 +31,6 @@ int main()
     std::array<TFHEpp::lvl1param::T, TFHEpp::lvl1param::n> pmu;
     for (int i = 0; i < N; i++) pmu[i] = p[i] ? TFHEpp::lvl1param::μ : -TFHEpp::lvl1param::μ;
 
-    {
-        std::ofstream ofs{"ptxt.data", std::ios::binary};
-        cereal::PortableBinaryOutputArchive ar(ofs);
-        ar(p);
-    };
     std::cout << "The plaintext has been serialized." << std::endl;
 
     // Encrypt the plaintext
@@ -52,4 +47,8 @@ int main()
         ar(ctxt_rlwe);
     };
     std::cout << "The RLWE ciphertext has been serialized." << std::endl;
+
+    std::cout << "-> plaintext      = ";
+    for (int i = 0; i < 32; i++) std::cout << static_cast<int>(p[i]);
+    std::cout << std::endl;
 }

@@ -19,7 +19,6 @@ int main()
 
     // reads the cloud key from file
     {
-        const std::string path = "./cloud.key";
         std::ifstream ifs("./cloud.key", std::ios::binary);
         cereal::PortableBinaryInputArchive ar(ifs);
         ek.serialize(ar);
@@ -27,7 +26,7 @@ int main()
     // import input
     TFHEpp::TRLWE<TFHEpp::lvl1param> ctxt_rlwe;
     {
-        std::ifstream ifs{"ctxt_rlwe.data", std::ios::binary};
+        std::ifstream ifs{"./ctxt_rlwe.data", std::ios::binary};
         cereal::PortableBinaryInputArchive ar(ifs);
         ar(ctxt_rlwe);
     }
