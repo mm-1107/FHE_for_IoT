@@ -4,3 +4,5 @@ encode_encrypt_gperf
 test
 tfhe_openfhe
 build/
+bin/
+*.log

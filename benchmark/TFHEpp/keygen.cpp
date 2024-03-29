@@ -29,5 +29,7 @@ int main()
         cereal::PortableBinaryOutputArchive ar(ofs);
         ek.serialize(ar);
     };
+    std::cout << "lvl1param::n: " << TFHEpp::lvl1param::n << std::endl;
+    std::cout << "lvl0param::n: " << TFHEpp::lvl0param::n << std::endl;
     std::cout << "Done generating all keys." << std::endl;
 }

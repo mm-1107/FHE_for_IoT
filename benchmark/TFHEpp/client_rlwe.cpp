@@ -31,8 +31,6 @@ int main()
     std::array<TFHEpp::lvl1param::T, TFHEpp::lvl1param::n> pmu;
     for (int i = 0; i < N; i++) pmu[i] = p[i] ? TFHEpp::lvl1param::μ : -TFHEpp::lvl1param::μ;
 
-    std::cout << "The plaintext has been serialized." << std::endl;
-
     // Encrypt the plaintext
     std::cout << "Encrypt N bits with RLWE." << std::endl;
     // one-RLWE ciphertext
