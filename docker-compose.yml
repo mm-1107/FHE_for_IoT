@@ -2,6 +2,7 @@ version: '3'
 services:
   tfhe_experiment:
     network_mode: "host"
+    platform: "linux/arm64/v8"
     restart: always
     build: .
     container_name: 'tfhe'
